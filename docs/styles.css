@@ -283,8 +283,17 @@ html[lang=en] .step-caption p{max-width:40rem}
 .agent-output h3{font-size:.91rem;line-height:1.35;color:#16346b}
 .agent-output p{font-size:.8rem;line-height:1.4;margin:5px 0 2px;color:#405579}
 .agent-graphic img{width:100%;height:auto;display:block;margin:6px 0 3px;border-radius:6px}
+/* The chart gets a wide panel; its reading guide sits below the code on desktop. */
+.agent-code-column{display:contents}
+.agent-chart-note{display:none}
 @media(min-width:561px){
-  .agent-artifacts:has(.agent-graphic img){grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);align-items:start}
+  .agent-artifacts:has(.agent-graphic img){grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);align-items:stretch}
+  .agent-artifacts:has(.agent-graphic img) .agent-code-column{display:flex;flex-direction:column;gap:9px;min-width:0}
+  .agent-artifacts:has(.agent-graphic img) .agent-chart-note{display:flex;flex:1;flex-direction:column;align-items:flex-start;gap:6px;padding:11px 12px;border:1px solid #dce5fa;border-radius:11px;background:#f8faff;color:#16346b}
+  .agent-chart-note h3{font-size:.91rem;line-height:1.35}
+  .agent-chart-note p{font-size:.84rem;line-height:1.55;color:#405579}
+  .agent-chart-note a{margin-top:auto;padding-top:5px;color:#2147a0;font-size:.81rem;font-weight:700;text-decoration:underline;text-underline-offset:.2em}
+  .agent-output:has(.agent-graphic img)>p{display:none}
 }
 .agent-bars,.agent-issues{list-style:none;padding:0;margin:7px 0;font-size:.81rem;color:#20385f}
 .agent-bars li,.agent-issues li{display:grid;grid-template-columns:1fr auto;gap:4px;margin:5px 0}
@@ -321,7 +330,7 @@ html[lang=zh-CN] .hero-live .hero-title{letter-spacing:-.035em}
 .hero-live .hero-title .hero-title-sizer{visibility:hidden;pointer-events:none;user-select:none}
 .hero-live .hero-title .hero-title-part{color:var(--ink);margin:0}
 .hero-live .hero-title .hero-title-accent{color:var(--blue)}
-.hero-title-visible{transition:opacity .16s ease}
+.hero-title-visible{transition:opacity .28s ease}
 .hero-title.is-switching .hero-title-visible{opacity:0}
 .hero-title [data-hero-cursor]::after{content:"";display:inline-block;width:.045em;height:.86em;margin-inline-start:.045em;vertical-align:-.055em;background:var(--blue);border-radius:2px}
 .hero-rotation{display:inline-flex;align-items:center;gap:6px;margin:5px 0 0;padding:3px 8px;min-height:29px;border:1px solid transparent;border-radius:6px;background:transparent;color:#405782;font-size:.77rem;font-weight:650}
