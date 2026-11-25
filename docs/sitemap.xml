@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://shalom-lab.github.io/rcoder-home/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://shalom-lab.github.io/rcoder-home/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://shalom-lab.github.io/rcoder-home/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shalom-lab.github.io/rcoder-home/" />
+  </url>
+  <url>
+    <loc>https://shalom-lab.github.io/rcoder-home/en/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://shalom-lab.github.io/rcoder-home/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://shalom-lab.github.io/rcoder-home/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shalom-lab.github.io/rcoder-home/" />
+  </url>
+</urlset>
