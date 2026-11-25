@@ -1,0 +1,58 @@
+name: Deploy Rcoder Home to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rcoder-home-pages
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Validate static homepage
+        run: |
+          set -euo pipefail
+          test -s docs/index.html
+          test -s docs/en/index.html
+          for page in docs/index.html docs/en/index.html; do
+            grep -q 'id="agent-preview"' "$page"
+            grep -q 'noindex' "$page"
+          done
+          node --check docs/app.js
+          node --check docs/composer.js
+          test -s docs/assets/anscombe-chart.webp
+          test -s docs/assets/rcoder.svg
+          test -z "$(find docs -type l -print -quit)"
+          test -z "$(find docs -type f -iregex '.*\.\(mp4\|gif\|vtt\)' -print -quit)"
+      - name: Package static site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
