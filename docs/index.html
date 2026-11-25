@@ -11,9 +11,10 @@
 <link rel="alternate" hreflang="en" href="https://shalom-lab.github.io/rcoder-home/en/">
 <link rel="alternate" hreflang="x-default" href="https://shalom-lab.github.io/rcoder-home/">
 <link rel="icon" href="assets/rcoder.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=96eacb0">
+<link rel="stylesheet" href="styles.css?v=hero-type-1">
 <script src="app.js" defer></script>
 <script src="composer.js" defer></script>
+<script src="hero-typing.js?v=1" defer></script>
 <meta name="robots" content="noindex, follow">
 </head>
 <body>
@@ -34,13 +35,30 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <p class="eyebrow"><span class="eye-line"></span> 为 R 数据分析而做的 AI Agent</p>
-          <h1 id="hero-heading">用一句话，<br><span>开始你的 R 分析</span></h1>
+          <h1 id="hero-heading" class="hero-title" aria-label="一句话，开始你的数据分析。">
+            <span class="hero-title-visible" aria-hidden="true"><span class="hero-title-part" data-hero-part>一句话，</span><span class="hero-title-part hero-title-accent" data-hero-part>开始你的数据分析。</span><span class="hero-title-part" data-hero-part></span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="0"><span class="hero-title-part">一句话，</span><span class="hero-title-part hero-title-accent">开始你的数据分析。</span><span class="hero-title-part"></span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="1"><span class="hero-title-part">一句话，</span><span class="hero-title-part hero-title-accent">无限数据洞察。</span><span class="hero-title-part"></span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="2"><span class="hero-title-part">一句话，</span><span class="hero-title-part hero-title-accent">其余交给 R。</span><span class="hero-title-part"></span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="3"><span class="hero-title-part">一句话，</span><span class="hero-title-part hero-title-accent">开启数据探索。</span><span class="hero-title-part"></span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="4"><span class="hero-title-part">一句话，开启</span><span class="hero-title-part hero-title-accent">强大的 R 数据分析。</span><span class="hero-title-part"></span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="5"><span class="hero-title-part">一切，只需</span><span class="hero-title-part hero-title-accent">一句话</span><span class="hero-title-part">开启。</span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="6"><span class="hero-title-part">数据分析，从</span><span class="hero-title-part hero-title-accent">一场对话</span><span class="hero-title-part">开始。</span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="7"><span class="hero-title-part">只管提问，</span><span class="hero-title-part hero-title-accent">R 分析</span><span class="hero-title-part">交给我们。</span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="8"><span class="hero-title-part">思考、</span><span class="hero-title-part hero-title-accent">提问、</span><span class="hero-title-part">分析。</span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="9"><span class="hero-title-part">你的想法，我们的代码，</span><span class="hero-title-part hero-title-accent">你的数据洞察。</span><span class="hero-title-part"></span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="10"><span class="hero-title-part">重新定义 </span><span class="hero-title-part hero-title-accent">R 数据分析。</span><span class="hero-title-part"></span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="11"><span class="hero-title-part">使用 R 的</span><span class="hero-title-part hero-title-accent">全新方式。</span><span class="hero-title-part"></span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="12"><span class="hero-title-part">少一点编程，</span><span class="hero-title-part hero-title-accent">多一点发现。</span><span class="hero-title-part"></span></span>
+              <span class="hero-title-sizer" aria-hidden="true" data-hero-line="13"><span class="hero-title-part">让数据分析</span><span class="hero-title-part hero-title-accent">跟上思考的速度。</span><span class="hero-title-part"></span></span>
+          </h1>
           <p class="hero-description">告诉 Rcoder Agent 你想做什么。它写 R 代码、运行分析，并把图表和代码交给你检查。</p>
           <div class="actions">
             <a class="button button-primary" href="https://rcoder.rlearner.com/" target="_blank" rel="noopener noreferrer">打开工作区</a>
             <a class="button button-quiet" href="#demo">查看案例成果</a>
           </div>
           <p class="hero-note">手动运行 R 无需 API Key；Agent 需配置并验证模型 API Key。</p>
+          <button hidden type="button" class="hero-rotation" aria-label="标题轮播" aria-pressed="false" data-hero-pause="暂停标题" data-hero-play="播放标题"><span class="hero-rotation-icon" aria-hidden="true"></span><span data-hero-control>暂停标题</span></button>
         </div>
         <section id="agent-preview" class="agent-preview" aria-labelledby="agent-preview-title">
           <div class="agent-top">
