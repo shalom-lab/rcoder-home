@@ -282,7 +282,10 @@ html[lang=en] .step-caption p{max-width:40rem}
 .agent-output{padding:7px 11px;background:#f8faff}
 .agent-output h3{font-size:.91rem;line-height:1.35;color:#16346b}
 .agent-output p{font-size:.8rem;line-height:1.4;margin:5px 0 2px;color:#405579}
-.agent-graphic img{width:100%;height:160px;object-fit:contain;object-position:left center}
+.agent-graphic img{width:100%;height:auto;display:block;margin:6px 0 3px;border-radius:6px}
+@media(min-width:561px){
+  .agent-artifacts:has(.agent-graphic img){grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);align-items:start}
+}
 .agent-bars,.agent-issues{list-style:none;padding:0;margin:7px 0;font-size:.81rem;color:#20385f}
 .agent-bars li,.agent-issues li{display:grid;grid-template-columns:1fr auto;gap:4px;margin:5px 0}
 .agent-bars i{height:8px;grid-column:1/-1;border-radius:5px;background:linear-gradient(90deg,#2b5be8 var(--fill),#e6edfe var(--fill))}
