@@ -116,7 +116,7 @@ section[id]{scroll-margin-top:99px}
 .closing-card{background:linear-gradient(112deg,#e7eeff 0%,#eef1ff 72%,#e9e9fc 100%);border:1px solid #dce3fd;border-radius:23px;padding:29px 35px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .closing h2{font-size:clamp(1.68rem,2.7vw,2.65rem)}
 .site-footer{background:#f6f8ff;border-top:1px solid var(--line);padding:22px 0}
-.footer-grid{display:grid;grid-template-columns:auto 1fr auto auto;gap:23px;align-items:center}
+.footer-grid{display:grid;grid-template-columns:auto 1fr auto;gap:23px;align-items:center}
 .site-footer p,.site-footer a:not(.brand){font-size:.88rem;color:var(--sub)}
 @media(max-width:1040px){
   .shell{width:calc(100% - 52px)}
@@ -339,3 +339,13 @@ html[lang=zh-CN] .hero-live .hero-title{letter-spacing:-.035em}
 .hero-rotation[aria-pressed=false] .hero-rotation-icon{width:0;height:0;border:0;border-block:4px solid transparent;border-inline-start:7px solid currentColor}
 @media(max-width:650px){html[lang] .hero-live .hero-title{font-size:clamp(1.93rem,6.55vw,2.7rem);line-height:1.12}}
 @media(prefers-reduced-motion:reduce){.hero-title-visible{transition:none}.hero-title [data-hero-cursor]::after{display:none}}
+
+
+/* Keep navigation usable at narrow widths and expose a compact set of footer destinations. */
+.footer-links{display:flex;gap:12px 20px;align-items:center;flex-wrap:wrap}
+.footer-links a{display:inline-flex;align-items:center;min-height:36px}
+@media(max-width:750px){.nav a[href="#models"]{display:none}}
+@media(max-width:570px){
+  .footer-links{grid-column:1/-1;gap:4px 17px}
+  .nav{flex-wrap:wrap;gap:5px 18px}
+}
