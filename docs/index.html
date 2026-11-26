@@ -16,6 +16,8 @@
 <script src="composer.js" defer></script>
 <script src="hero-typing.js?v=2" defer></script>
 <meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="models.css?v=1">
+<script src="models.js?v=1" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到正文</a>
@@ -202,6 +204,36 @@ plot(anscombe$x1, anscombe$y1)</code></pre><p>这里是说明流程的简化代�
         <details><summary>Agent 生成的 R 脚本能修改吗？</summary><p>可以。它是项目里的普通 R 文件，可以在编辑器里阅读和调整，再重新运行。输出也应打开核对，不把 Agent 的文字回复当作验收。</p></details>
         <details><summary>项目保存在哪里？换浏览器怎么办？</summary><p>项目数据保存在当前浏览器的站点存储。换设备、浏览器或工作区域名前，先下载并打开项目 ZIP 检查，再在新环境导入验证。ZIP 以项目文件为主，不是整个工作区状态的快照。</p></details>
         <details><summary>使用 Agent 时，数据会发送到哪里？</summary><p>项目默认保存在浏览器里，但 Agent 请求会发给你配置的模型服务；你给出的提示、附件或被纳入请求的项目上下文可能随请求发送。使用敏感数据前请核对服务政策和项目要求。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="models-band" id="models" aria-labelledby="models-heading">
+    <div class="shell">
+      <div class="models-panel">
+        <div class="models-intro">
+          <div>
+            <h2 id="models-heading">选一个顺手的 AI 模型，开始分析。</h2>
+            <p>在 Rcoder 连接您常用的 AI 服务，也可以配置兼容接口。</p>
+          </div>
+          <button type="button" class="models-toggle" aria-controls="models-list" data-play="播放轮播" data-stop="停止并查看全部" hidden>停止并查看全部</button>
+        </div>
+        <div class="models-viewport">
+          <div class="models-track">
+            <ul class="models-list" id="models-list" role="list">
+          <li class="model-tile"><img src="assets/models/deepseek.svg" width="32" height="32" alt=""> <span>DeepSeek</span></li>
+          <li class="model-tile"><img src="assets/models/openai.svg" width="32" height="32" alt=""> <span>OpenAI</span></li>
+          <li class="model-tile"><img src="assets/models/gemini.svg" width="32" height="32" alt=""> <span>Gemini</span></li>
+          <li class="model-tile"><img src="assets/models/claude.svg" width="32" height="32" alt=""> <span>Claude</span></li>
+          <li class="model-tile"><img src="assets/models/qwen.svg" width="32" height="32" alt=""> <span>通义千问</span></li>
+          <li class="model-tile"><img src="assets/models/kimi.svg" width="32" height="32" alt=""> <span>Kimi</span></li>
+          <li class="model-tile"><img src="assets/models/minimax.svg" width="32" height="32" alt=""> <span>MiniMax</span></li>
+          <li class="model-tile"><img src="assets/models/zhipu.svg" width="32" height="32" alt=""> <span>智谱 AI</span></li>
+          <li class="model-tile"><img src="assets/models/siliconflow.svg" width="32" height="32" alt=""> <span>硅基流动</span></li>
+          <li class="model-tile"><img src="assets/models/ollama.svg" width="32" height="32" alt=""> <span>Ollama</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>

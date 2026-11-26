@@ -33,6 +33,9 @@ jobs:
           done
           node --check docs/app.js
           node --check docs/composer.js
+          node --check docs/hero-typing.js
+          node --check docs/models.js
+          node scripts/validate-home.mjs
           test -s docs/assets/anscombe-chart.webp
           test -s docs/assets/rcoder.svg
           test -z "$(find docs -type l -print -quit)"

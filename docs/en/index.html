@@ -16,6 +16,8 @@
 <script src="../composer.js" defer></script>
 <script src="../hero-typing.js?v=2" defer></script>
 <meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="../models.css?v=1">
+<script src="../models.js?v=1" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -202,6 +204,36 @@ plot(anscombe$x1, anscombe$y1)</code></pre><p>This excerpt illustrates the workf
         <details><summary>Can I edit the R scripts Agent creates?</summary><p>Yes. They are regular R files in your project. Read, edit, and rerun them in the workspace. Open the output files to check the results rather than relying on Agent&#x27;s reply alone.</p></details>
         <details><summary>Where are projects stored? Can I switch browsers?</summary><p>Projects are stored in site storage in your current browser. Before changing browser, device, or workspace domain, export and inspect a project ZIP, then test importing it in the new environment. The ZIP backs up project files, not the full workspace state.</p></details>
         <details><summary>Where does data go when I use Agent?</summary><p>Projects are stored in your browser by default. Agent sends requests to the model provider you configure. Prompts, attachments, and project context included in a request may be sent to that provider. Check its policies and your project requirements before using sensitive data.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="models-band" id="models" aria-labelledby="models-heading">
+    <div class="shell">
+      <div class="models-panel">
+        <div class="models-intro">
+          <div>
+            <h2 id="models-heading">Choose the AI model that works for you.</h2>
+            <p>Connect your preferred AI service or configure a compatible endpoint in Rcoder.</p>
+          </div>
+          <button type="button" class="models-toggle" aria-controls="models-list" data-play="Play carousel" data-stop="Stop and show all" hidden>Stop and show all</button>
+        </div>
+        <div class="models-viewport">
+          <div class="models-track">
+            <ul class="models-list" id="models-list" role="list">
+          <li class="model-tile"><img src="../assets/models/deepseek.svg" width="32" height="32" alt=""> <span>DeepSeek</span></li>
+          <li class="model-tile"><img src="../assets/models/openai.svg" width="32" height="32" alt=""> <span>OpenAI</span></li>
+          <li class="model-tile"><img src="../assets/models/gemini.svg" width="32" height="32" alt=""> <span>Gemini</span></li>
+          <li class="model-tile"><img src="../assets/models/claude.svg" width="32" height="32" alt=""> <span>Claude</span></li>
+          <li class="model-tile"><img src="../assets/models/qwen.svg" width="32" height="32" alt=""> <span>Qwen</span></li>
+          <li class="model-tile"><img src="../assets/models/kimi.svg" width="32" height="32" alt=""> <span>Kimi</span></li>
+          <li class="model-tile"><img src="../assets/models/minimax.svg" width="32" height="32" alt=""> <span>MiniMax</span></li>
+          <li class="model-tile"><img src="../assets/models/zhipu.svg" width="32" height="32" alt=""> <span>Zhipu AI</span></li>
+          <li class="model-tile"><img src="../assets/models/siliconflow.svg" width="32" height="32" alt=""> <span>SiliconFlow</span></li>
+          <li class="model-tile"><img src="../assets/models/ollama.svg" width="32" height="32" alt=""> <span>Ollama</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
