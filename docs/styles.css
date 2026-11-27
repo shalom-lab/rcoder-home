@@ -349,3 +349,6 @@ html[lang=zh-CN] .hero-live .hero-title{letter-spacing:-.035em}
   .footer-links{grid-column:1/-1;gap:4px 17px}
   .nav{flex-wrap:wrap;gap:5px 18px}
 }
+
+.site-footer .footer-filing{margin:12px auto 0;text-align:center}
+.footer-filing a{text-decoration:underline;text-underline-offset:.16em}
