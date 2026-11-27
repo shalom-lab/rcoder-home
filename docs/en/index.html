@@ -13,7 +13,7 @@
 <link rel="icon" href="../assets/rcoder.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../styles.css?v=home-copy-1">
 <script src="../app.js" defer></script>
-<script src="../composer.js?v=2" defer></script>
+<script src="../composer.js?v=3" defer></script>
 <script src="../hero-typing.js?v=2" defer></script>
 <meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="../models.css?v=3">
@@ -86,7 +86,7 @@
           <form class="agent-form" aria-describedby="agent-privacy">
             <label for="agent-input" class="sr-only">Analysis prompt</label>
             <div class="agent-box">
-              <textarea id="agent-input" rows="2" maxlength="400" placeholder="Describe your analysis…">Recreate Anscombe’s quartet in R as a 2×2 scatterplot with fitted lines.</textarea>
+              <textarea id="agent-input" rows="2" maxlength="400" placeholder="Describe your analysis…">Plot weight and fuel economy in mtcars, and color the points by transmission.</textarea>
               <div class="agent-box-tools">
                 <span class="agent-input-hint">Write in your own words</span>
                 <button type="submit" class="agent-send" disabled>
@@ -96,7 +96,7 @@
             </div>
             <div class="agent-select">
               <div class="agent-chips" role="group" aria-label="Choose a demo scenario">
-                <button type="button" data-scene="0" aria-pressed="true">Recreate a chart</button>
+                <button type="button" data-scene="0" aria-pressed="true">Plot a relationship</button>
                 <button type="button" data-scene="1" aria-pressed="false">Analyze a CSV</button>
                 <button type="button" data-scene="2" aria-pressed="false">Run a statistical test</button>
                 <button type="button" data-scene="3" aria-pressed="false">Check data quality</button>
@@ -111,16 +111,16 @@
             <p class="agent-sent"></p>
             <div class="agent-artifacts" hidden>
               <div class="agent-code"><div><span aria-hidden="true">R</span><code class="agent-filename"></code></div><pre tabindex="0" aria-label="Sample R code"><code class="agent-code-content"></code></pre></div>
-              <div class="agent-output"><h3></h3><div class="agent-graphic"></div><p></p><a class="agent-chart-link" href="../assets/anscombe-chart.webp" target="_blank" rel="noopener" hidden>View full-size chart</a></div>
+              <div class="agent-output"><h3></h3><div class="agent-graphic"></div><p></p><a class="agent-chart-link" href="../assets/mtcars-chart.svg" target="_blank" rel="noopener" hidden>View full-size chart</a><a class="agent-chart-link agent-csv-link" href="../assets/my-sales.csv" download hidden>Download sample CSV</a></div>
             </div>
             <a class="agent-next" href="https://rcoder.rlearner.com/" target="_blank" rel="noopener noreferrer" hidden>Run your task in Rcoder</a>
           </div>
           <template id="agent-scenes">
-            <div data-title="Recreate a chart" data-prompt="Recreate Anscombe’s quartet in R as a 2×2 scatterplot with fitted lines." data-note="Anscombe’s quartet" data-detail="Similar fitted lines, very different data distributions." data-labels=""></div>
-            <div data-title="Analyze a CSV" data-prompt="Summarize the sample sales by region, make a bar chart, and export a summary CSV." data-note="Total sales by region" data-detail="The sample totals 450. West is 50 higher than East." data-labels="East|West"></div>
+            <div data-title="Plot a relationship" data-prompt="Plot weight and fuel economy in mtcars, and color the points by transmission." data-note="Weight and fuel economy" data-detail="In this sample, heavier cars generally get fewer miles per gallon." data-labels=""></div>
+            <div data-title="Analyze a CSV" data-prompt="Summarize my sales by region from my-sales.csv, plot the totals, and export a summary CSV." data-note="Total sales by region" data-detail="Recorded sales total 450. West is 50 higher than East." data-labels="East|West"></div>
             <div data-title="Run a statistical test" data-prompt="Compare mean dried weight across the three PlantGrowth groups with a one-way ANOVA and a boxplot." data-note="PlantGrowth · Three groups" data-detail="One-way ANOVA: F(2, 27) = 4.85, p = 0.0159. The boxplots show each group’s distribution." data-labels="Control|Treatment 1|Treatment 2"></div>
-            <div data-title="Check data quality" data-prompt="Check the sample sales data for missing prices and duplicate orders. List the affected rows." data-note="Sample sales data checks" data-detail="Flag affected rows without deleting or filling any values." data-labels="Missing price|Duplicate order"></div>
-            <div data-idle="" data-running="Showing the code and run steps…" data-done="Sample result expanded" data-custom="This is your prompt. The demo does not run custom prompts. Open Rcoder to run your task." data-sent="Sent:" data-anscombe-alt="Four scatterplots of Anscombe’s quartet: similar trend lines but very different distributions."></div>
+            <div data-title="Check data quality" data-prompt="Check my-sales.csv for missing amounts and duplicate orders, and list the row numbers." data-note="Sales file checks" data-detail="Flagged rows only. The source file is unchanged." data-labels="Missing amount|Duplicate order"></div>
+            <div data-idle="" data-running="Showing the code and run steps…" data-done="Sample result expanded" data-custom="This is your prompt. The demo does not run custom prompts. Open Rcoder to run your task." data-sent="Sent:" data-chart-alt="Scatterplot of vehicle weight and fuel economy for 32 models, colored by transmission"></div>
           </template>
         </section>
 
@@ -137,7 +137,7 @@
     <div class="shell">
       <div class="section-heading">
         <div><p class="eyebrow"><span class="eye-line"></span> From request to results</p><h2 id="workflow-heading">See the code Rcoder Agent writes.<br>Make it your own.</h2></div>
-        <p>Follow one request from prompt to chart and summary table with Anscombe’s quartet.</p>
+        <p>Follow one mtcars request from prompt to chart and summary table.</p>
       </div>
       <div class="workflow-board">
         <div class="step-list" role="tablist" aria-label="Agent workflow" aria-orientation="vertical">
@@ -149,34 +149,34 @@
         <div class="step-content">
           <section class="step-panel" id="panel-prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0">
             <div class="artifact-sheet">
-              <h3>Example prompt for Rcoder Agent</h3><blockquote>Use R’s built-in anscombe data to plot four groups on matching axes. Save the chart and a summary table.</blockquote>
+              <h3>Example prompt for Rcoder Agent</h3><blockquote>Plot weight and fuel economy in mtcars, and color the points by transmission. Export the chart and a grouped summary.</blockquote>
             </div>
             <div class="step-caption"><button class="button button-quiet copy-button" id="copy-prompt" type="button">Copy example prompt</button></div>
           </section>
           <section class="step-panel" id="panel-code" role="tabpanel" aria-labelledby="tab-code" tabindex="0" hidden>
             <div class="artifact-sheet">
-              <p class="artifact-kicker">R · scripts/explore.R</p><h3>The script stays in your project</h3><pre><code>data(anscombe)
-lm(y1 ~ x1, data = anscombe)
-plot(anscombe$x1, anscombe$y1)</code></pre><p>This excerpt illustrates the workflow; it is not the full script or a live run.</p>
+              <p class="artifact-kicker">R · scripts/mtcars.R</p><h3>The script stays in your project</h3><pre><code>d &lt;- datasets::mtcars
+colors &lt;- c("#2458c6", "#be4b10")
+plot(mpg ~ wt, data = d, pch = 19, col = colors[d$am + 1L])</code></pre><p>This excerpt illustrates the workflow; it is not the full script or a live run.</p>
             </div>
-            <div class="step-caption"><div><h3>The script stays in your project</h3><p>Open <code>scripts/explore.R</code> to review the inputs, plotting logic, and output paths. Edit it directly if needed.</p></div></div>
+            <div class="step-caption"><div><h3>The script stays in your project</h3><p>Open <code>scripts/mtcars.R</code> to review the inputs, plotting logic, and output paths. Edit it directly if needed.</p></div></div>
           </section>
           <section class="step-panel" id="panel-run" role="tabpanel" aria-labelledby="tab-run" tabindex="0" hidden>
             <div class="artifact-sheet">
-              <h3>Open the results after the run</h3><ul><li>Check the axes, panels, and data source.</li><li>Open the saved PNG instead of relying on a success message.</li><li>Verify the CSV columns, groups, and values.</li></ul>
+              <h3>Open the results after the run</h3><ul><li>Check the units for weight and fuel economy.</li><li>Open the saved PNG instead of relying on a success message.</li><li>Verify the CSV columns, groups, and values.</li></ul>
             </div>
-            <div class="step-caption"><div><h3>Open the results after the run</h3><p>Read the Agent&#x27;s run output, then open the PNG to check the axes, panels, and data source.</p></div></div>
+            <div class="step-caption"><div><h3>Open the results after the run</h3><p>Read the Agent&#x27;s run output, then open the PNG to check the axes, legend, and data source.</p></div></div>
           </section>
           <section class="step-panel" id="panel-output" role="tabpanel" aria-labelledby="tab-output" tabindex="0" hidden>
-            <figure class="workspace-shot output-shot"><img src="../assets/anscombe-chart.webp" width="960" height="840" loading="lazy" alt="The actual four-panel Anscombe export, with matching axis limits"><div class="export-files"><p class="eyebrow">Files from this example</p><ul><li><span class="file-type">R</span><code>scripts/explore.R</code></li><li><span class="file-type file-type-png">PNG</span><code>output/anscombe_quartet.png</code></li><li><span class="file-type file-type-csv">CSV</span><code>output/anscombe_summary.csv</code></li></ul></div></figure>
-            <div class="step-caption"><div><h3>Take the results with you</h3><p>Download individual files in the workspace or export a project ZIP. Open the downloads to make sure they contain what you expect.</p></div><a class="button button-quiet sample-download" href="../assets/anscombe-chart.webp" download="rcoder-anscombe.webp">Download sample chart</a></div>
+            <figure class="workspace-shot output-shot"><img src="../assets/mtcars-chart.svg" width="960" height="680" loading="lazy" alt="Scatterplot of vehicle weight and fuel economy for 32 models, colored by transmission"><div class="export-files"><p class="eyebrow">Files from this example</p><ul><li><span class="file-type">R</span><code>scripts/mtcars.R</code></li><li><span class="file-type file-type-png">PNG</span><code>output/mtcars_chart.png</code></li><li><span class="file-type file-type-csv">CSV</span><code>output/mtcars_summary.csv</code></li></ul></div></figure>
+            <div class="step-caption"><div><h3>Take the results with you</h3><p>Download individual files in the workspace or export a project ZIP. Open the downloads to make sure they contain what you expect.</p></div><a class="button button-quiet sample-download" href="../assets/mtcars-chart.svg" download="rcoder-mtcars.svg">Download sample chart</a></div>
           </section>
         </div>
       </div>
       <p id="copy-status" class="copy-status" data-success="Example prompt copied." data-fallback="The prompt is open and selected. Use your device&#x27;s copy command." role="status" aria-live="polite"></p>
       <details class="prompt-details" id="prompt-details">
         <summary>Read the full example prompt</summary>
-        <div class="prompt-text" id="prompt-text">Use the built-in R dataset anscombe. Write and run scripts/explore.R. Make a 2×2 grid of scatter plots in base R with the same axis limits in every panel, and fit a line in each one. Save output/anscombe_quartet.png and a CSV with mean x, mean y, correlation, and slope by group. Credit the data source and label this as a new visualization, not a reproduction of the paper&#x27;s figure.</div>
+        <div class="prompt-text" id="prompt-text">Plot weight and fuel economy in mtcars, and color the points by transmission. Use base R. Save the PNG to output/mtcars_chart.png and export the count, mean weight, and mean mpg by transmission to output/mtcars_summary.csv.</div>
       </details>
     </div>
   </section>
@@ -184,13 +184,12 @@ plot(anscombe$x1, anscombe$y1)</code></pre><p>This excerpt illustrates the workf
   <section class="demo section" id="demo" aria-labelledby="demo-heading">
     <div class="shell demo-grid">
       <div>
-        <p class="eyebrow"><span class="eye-line"></span> PUBLIC DATA EXAMPLE · ANSCOMBE</p>
-        <h2 id="demo-heading">See the pattern behind the number.</h2>
-        <p>All four groups in Anscombe’s quartet have a correlation of about 0.82, yet their scatter plots look very different.</p>
-        <p class="demo-note">A new visualization of R’s built-in Anscombe data, not a reproduction of the paper figure.</p>
-        <a class="button button-quiet release-case-download" href="../assets/anscombe-chart.webp" download="rcoder-anscombe.webp">Download sample chart</a>
+        <p class="eyebrow"><span class="eye-line"></span> BUILT-IN R DATA · MTCARS</p>
+        <h2 id="demo-heading">Do heavier cars get fewer miles per gallon?</h2>
+        <p>Compare weight and fuel economy across 32 cars, with colors for automatic and manual transmission.</p>
+        <a class="button button-quiet release-case-download" href="../assets/mtcars-chart.svg" download="rcoder-mtcars.svg">Download sample chart</a> <a class="button button-quiet release-case-download" href="../assets/mtcars.R" download>R script</a> <a class="button button-quiet release-case-download" href="../assets/mtcars_summary.csv" download>Download summary CSV</a>
       </div>
-      <figure class="release-case-chart"><img src="../assets/anscombe-chart.webp" width="960" height="840" loading="lazy" alt="The actual four-panel Anscombe export, with matching axis limits"></figure>
+      <figure class="release-case-chart"><img src="../assets/mtcars-chart.svg" width="960" height="680" loading="lazy" alt="Scatterplot of vehicle weight and fuel economy for 32 models, colored by transmission"></figure>
     </div>
   </section>
 

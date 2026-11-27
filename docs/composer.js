@@ -3,7 +3,7 @@
   const root = document.getElementById('agent-preview');
   if (!root) return;
   const $ = s => root.querySelector(s);
-  const chart = new URL('assets/anscombe-chart.webp', document.currentScript.src);
+  const chart = new URL('assets/mtcars-chart.svg', document.currentScript.src);
   const input = $('#agent-input'), form = $('.agent-form'), send = $('.agent-send');
   const cycle = $('.agent-cycle'), live = $('.agent-live'), result = $('.agent-result');
   const artifacts = $('.agent-artifacts'), next = $('.agent-next'), graphic = $('.agent-graphic');
@@ -12,17 +12,16 @@
   const scenes = [a,b,c,d];
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const data = [
-    {file:'recreate.R',code:`d <- datasets::anscombe
-par(mfrow = c(2, 2))
-for (i in 1:4) {
-  x <- d[[i]]; y <- d[[i + 4]]
-  plot(x, y, xlim = c(3, 20),
-       ylim = c(2, 15), pch = 19)
-  abline(lm(y ~ x), col = "#315AEA")
-}`},
-    {file:'sales_summary.R',code:`sales <- data.frame(
-  region = c("East", "East", "West", "West"),
-  amount = c(120, 80, 110, 140))
+    {file:'mtcars.R',code:`d <- datasets::mtcars
+d$gearbox <- factor(d$am, labels = c("Automatic", "Manual"))
+colors <- c(Automatic = "#2458c6", Manual = "#be4b10")
+plot(mpg ~ wt, data = d, pch = 19,
+     col = colors[d$gearbox],
+     xlab = "Weight (1,000 lb)",
+     ylab = "Fuel economy (US mpg)")
+legend("topright", names(colors),
+       col = colors, pch = 19, bty = "n")`},
+    {file:'sales_summary.R',code:`sales <- read.csv("my-sales.csv")
 total <- aggregate(amount ~ region, sales, sum)
 barplot(total$amount, names.arg = total$region)
 write.csv(total, "sales_summary.csv",
@@ -32,10 +31,8 @@ fit <- aov(weight ~ group, data = d)
 summary(fit)
 boxplot(weight ~ group, data = d,
         ylab = "Dried weight")`},
-    {file:'check_sales.R',code:`sales <- data.frame(
-  order = c("A01", "A02", "A02", "A03"),
-  price = c(120, NA, 140, 110))
-which(is.na(sales$price))
+    {file:'check_sales.R',code:`sales <- read.csv("my-sales.csv")
+which(is.na(sales$amount))
 which(duplicated(sales$order) |
       duplicated(sales$order, fromLast = TRUE))`}
   ];
@@ -49,7 +46,7 @@ which(duplicated(sales$order) |
     const labels = scene.labels.split('|');
     if (i === 0) {
       const img = el('img'); img.src = chart.href;
-      img.alt = strings.anscombeAlt; img.width = 960; img.height = 840;
+      img.alt = strings.chartAlt; img.width = 960; img.height = 680;
       return img;
     }
     if (i === 1 || i === 3) {
@@ -183,6 +180,9 @@ which(duplicated(sales$order) |
     $('.agent-output p').textContent=scene.detail;
     graphic.replaceChildren(graph(i,scene));
     link.href=chart.href; link.hidden=i!==0;
+    const csvLink=$('.agent-csv-link');
+    csvLink.href=new URL('my-sales.csv', chart).href;
+    csvLink.hidden=i!==1 && i!==3;
     $('.agent-result-state').textContent=strings.done;
     live.textContent=strings.done;
     artifacts.hidden=false;
