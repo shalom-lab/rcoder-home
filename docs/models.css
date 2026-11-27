@@ -12,11 +12,11 @@
 .model-tile{display:flex;align-items:center;gap:10px;min-height:64px;padding:10px 13px;border:1px solid #dfe6f7;border-radius:12px;background:#fff;color:#142341;font-size:1rem;font-weight:760;line-height:1.2;white-space:nowrap}
 .model-tile img{display:block;flex:0 0 32px;width:32px;height:32px;object-fit:contain}
 .models-panel.is-moving .models-viewport{overflow:hidden;mask-image:linear-gradient(to right,#000 calc(100% - 15px),transparent)}
-.models-panel.is-moving .models-track{display:flex;width:max-content;animation:rcoder-models-slide 42s linear infinite;animation-play-state:paused}
-.models-panel.is-moving .models-list{display:flex;flex:none;padding-inline-end:10px}
+.models-panel.is-moving .models-track{display:flex;width:max-content;animation:rcoder-models-slide 36s linear infinite;animation-play-state:paused}
+.models-panel.is-moving .models-list{display:grid;grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-flow:column;flex:none;padding-inline-end:10px}
 .models-panel.is-moving .model-tile{width:166px}
 .models-panel.is-moving.is-visible .models-track{animation-play-state:running}
-@keyframes rcoder-models-slide{to{transform:translateX(-50%)}}
+@keyframes rcoder-models-slide{to{transform:translateX(calc(-100% / 3))}}
 @media(max-width:640px){
   .models-band{padding-bottom:24px}
   .models-panel{padding:17px 14px 15px;border-radius:18px}

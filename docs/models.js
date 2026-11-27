@@ -5,11 +5,15 @@
   const panel = list.closest('.models-panel');
   const button = panel.querySelector('.models-toggle');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const second = list.cloneNode(true);
-  second.removeAttribute('id');
-  second.setAttribute('aria-hidden', 'true');
-  second.hidden = true;
-  list.after(second);
+  // Three repeats keep the two-row ribbon filled even on wide screens.
+  const copies = Array.from({ length: 2 }, () => {
+    const copy = list.cloneNode(true);
+    copy.removeAttribute('id');
+    copy.setAttribute('aria-hidden', 'true');
+    copy.hidden = true;
+    return copy;
+  });
+  list.after(...copies);
   let playing = !motion.matches;
   let onScreen = !('IntersectionObserver' in window);
   function visibility() {
@@ -18,7 +22,7 @@
   function display() {
     panel.classList.toggle('is-moving', playing);
     // The duplicate only supplies the seamless visual loop, never a second accessible list.
-    second.hidden = !playing;
+    for (const copy of copies) copy.hidden = !playing;
     button.textContent = playing ? button.dataset.stop : button.dataset.play;
   }
   button.addEventListener('click', () => {
