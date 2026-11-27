@@ -329,8 +329,16 @@ html[lang=zh-CN] .hero-live .hero-title{letter-spacing:-.035em}
   .nav{flex-wrap:wrap;gap:5px 18px}
 }
 
-.site-footer .footer-filing{margin:12px auto 0;text-align:center}
-.footer-filing a{text-decoration:underline;text-underline-offset:.16em}
+.footer-grid--filing{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);grid-template-areas:"brand filing links";gap:8px 16px}
+.footer-grid--filing .brand{grid-area:brand;justify-self:start}
+.footer-grid--filing .footer-links{grid-area:links;justify-self:end;justify-content:flex-end}
+.site-footer .footer-filing{grid-area:filing;margin:0;text-align:center}
+.site-footer .footer-filing a{font-size:.81rem;text-decoration:none}
+.site-footer .footer-filing a:is(:hover,:focus-visible){text-decoration:underline;text-underline-offset:.16em}
+@media(max-width:840px){
+  .footer-grid--filing{grid-template-columns:1fr;grid-template-areas:"brand" "links" "filing";justify-items:center;gap:2px}
+  .footer-grid--filing .brand,.footer-grid--filing .footer-links{justify-self:center;justify-content:center}
+}
 
 .path-grid .path{display:flex;flex-direction:column;align-items:flex-start}
 .path-grid .text-link{margin-top:auto}
