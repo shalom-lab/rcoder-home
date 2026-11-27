@@ -1,0 +1,90 @@
+name: Promote tagged Rcoder homepage
+
+on:
+  push:
+    tags: ['home-v*']
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    outputs:
+      commit: ${{ steps.tag.outputs.commit }}
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Validate tag and homepage
+        id: tag
+        env:
+          HOME_TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          [[ "$HOME_TAG" =~ ^home-v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]
+          commit=$(git rev-parse 'HEAD^{commit}')
+          git merge-base --is-ancestor "$commit" origin/main
+          node scripts/validate-home.mjs
+          for page in docs/index.html docs/en/index.html; do
+            grep -q 'id="agent-preview"' "$page"
+            grep -q 'noindex, follow' "$page"
+          done
+          for file in docs/*.js; do node --check "$file"; done
+          echo "commit=$commit" >> "$GITHUB_OUTPUT"
+          echo "tag=$HOME_TAG" >> "$GITHUB_OUTPUT"
+
+  promote:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    concurrency:
+      group: rcoder-home-promote
+      cancel-in-progress: false
+    steps:
+      - name: Update pinned tag in private deployment repository
+        env:
+          GH_TOKEN: ${{ secrets.RCODER_WEBR_CONTENTS_TOKEN }}
+          HOME_COMMIT: ${{ needs.validate.outputs.commit }}
+          HOME_TAG: ${{ needs.validate.outputs.tag }}
+        run: |
+          set -euo pipefail
+          if [[ -z "$GH_TOKEN" ]]; then
+            echo "::error::Configure the RCODER_WEBR_CONTENTS_TOKEN Actions secret before tagging."
+            exit 1
+          fi
+          endpoint="repos/shalom-lab/webr-online/contents/rcoder-home.lock.json"
+          gh api "$endpoint?ref=master" > "$RUNNER_TEMP/home-lock.json"
+          node --input-type=module - > "$RUNNER_TEMP/home-update.json" <<'JS'
+          import { readFileSync } from 'node:fs';
+          const { HOME_TAG: tag, HOME_COMMIT: commit, RUNNER_TEMP } = process.env;
+          const parseTag = value => {
+            const match = /^home-v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$/.exec(value);
+            if (!match) throw new Error('Invalid promotion tag');
+            return match.slice(1).map(BigInt);
+          };
+          const next = parseTag(tag);
+          if (!/^[a-f0-9]{40}$/.test(commit)) throw new Error('Invalid homepage commit');
+          const { content, sha } = JSON.parse(readFileSync(RUNNER_TEMP + '/home-lock.json', 'utf8'));
+          const lock = JSON.parse(Buffer.from(content, 'base64').toString('utf8'));
+          if (typeof lock.indexable !== 'boolean') throw new Error('Deployment repository is not initialized');
+          if (lock.tag !== null) {
+            const current = parseTag(lock.tag);
+            const first = next.findIndex((n, i) => n !== current[i]);
+            if (first < 0 && lock.commit !== commit) throw new Error('Tag was moved; use a new tag');
+            if (first < 0 || next[first] < current[first]) process.exit(0);
+          }
+          const data = JSON.stringify({ ...lock, tag, commit }, null, 2) + '\n';
+          process.stdout.write(JSON.stringify({
+            message: 'chore(home): promote ' + tag,
+            content: Buffer.from(data).toString('base64'), sha, branch: 'master'
+          }));
+          JS
+          if [[ -s "$RUNNER_TEMP/home-update.json" ]]; then
+            gh api --method PUT "$endpoint" --input "$RUNNER_TEMP/home-update.json" --jq '.commit.html_url'
+          else
+            echo "This tag is already deployed or older than the pinned release."
+          fi
