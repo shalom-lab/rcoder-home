@@ -11,9 +11,9 @@
 <link rel="alternate" hreflang="en" href="https://shalom-lab.github.io/rcoder-home/en/">
 <link rel="alternate" hreflang="x-default" href="https://shalom-lab.github.io/rcoder-home/">
 <link rel="icon" href="../assets/rcoder.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../styles.css?v=home-paths-3">
+<link rel="stylesheet" href="../styles.css?v=demo-panels-1">
 <script src="../app.js" defer></script>
-<script src="../composer.js" defer></script>
+<script src="../composer.js?v=2" defer></script>
 <script src="../hero-typing.js?v=2" defer></script>
 <meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="../models.css?v=2">
@@ -111,11 +111,8 @@
             <div class="agent-result-head"><strong>Rcoder Agent · Sample output</strong><span class="agent-result-state"></span></div>
             <p class="agent-sent"></p>
             <div class="agent-artifacts" hidden>
-              <div class="agent-code-column">
-                <div class="agent-code"><div><span aria-hidden="true">R</span><code class="agent-filename"></code></div><pre><code class="agent-code-content"></code></pre></div>
-                <aside class="agent-chart-note"><h3>What to look for</h3><p>All four groups have a correlation of about 0.82. The scatterplots show why that number alone can be misleading.</p><a href="../assets/anscombe-chart.webp" target="_blank" rel="noopener">View full-size chart</a></aside>
-              </div>
-              <div class="agent-output"><h3></h3><div class="agent-graphic"></div><p></p></div>
+              <div class="agent-code"><div><span aria-hidden="true">R</span><code class="agent-filename"></code></div><pre tabindex="0" aria-label="Sample R code"><code class="agent-code-content"></code></pre></div>
+              <div class="agent-output"><h3></h3><div class="agent-graphic"></div><p></p><a class="agent-chart-link" href="../assets/anscombe-chart.webp" target="_blank" rel="noopener" hidden>View full-size chart</a></div>
             </div>
             <a class="agent-next" href="https://rcoder.rlearner.com/" target="_blank" rel="noopener noreferrer" hidden>Run your task in Rcoder</a>
           </div>
@@ -124,7 +121,7 @@
             <div data-title="Analyze a CSV" data-prompt="Summarize the sample sales by region, make a bar chart, and export a summary CSV." data-note="Total sales by region" data-detail="The sample totals 450. West is 50 higher than East." data-labels="East|West"></div>
             <div data-title="Run a statistical test" data-prompt="Compare mean dried weight across the three PlantGrowth groups with a one-way ANOVA and a boxplot." data-note="PlantGrowth · Three groups" data-detail="One-way ANOVA: F(2, 27) = 4.85, p = 0.0159. The boxplots show each group’s distribution." data-labels="Control|Treatment 1|Treatment 2"></div>
             <div data-title="Check data quality" data-prompt="Check the sample sales data for missing prices and duplicate orders. List the affected rows." data-note="Sample sales data checks" data-detail="Flag affected rows without deleting or filling any values." data-labels="Missing price|Duplicate order"></div>
-            <div data-idle="" data-running="Showing the code and run steps…" data-done="Sample result expanded" data-custom="This is your prompt. The demo does not run custom prompts. Open Rcoder to run your task." data-sent="Sent:" data-anscombe-alt="Four scatterplots of Anscombe’s quartet: similar trend lines but very different distributions." data-asset="../assets/anscombe-chart.webp"></div>
+            <div data-idle="" data-running="Showing the code and run steps…" data-done="Sample result expanded" data-custom="This is your prompt. The demo does not run custom prompts. Open Rcoder to run your task." data-sent="Sent:" data-anscombe-alt="Four scatterplots of Anscombe’s quartet: similar trend lines but very different distributions."></div>
           </template>
         </section>
 

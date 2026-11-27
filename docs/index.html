@@ -11,9 +11,9 @@
 <link rel="alternate" hreflang="en" href="https://shalom-lab.github.io/rcoder-home/en/">
 <link rel="alternate" hreflang="x-default" href="https://shalom-lab.github.io/rcoder-home/">
 <link rel="icon" href="assets/rcoder.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=home-paths-3">
+<link rel="stylesheet" href="styles.css?v=demo-panels-1">
 <script src="app.js" defer></script>
-<script src="composer.js" defer></script>
+<script src="composer.js?v=2" defer></script>
 <script src="hero-typing.js?v=2" defer></script>
 <meta name="robots" content="noindex, follow">
 <link rel="stylesheet" href="models.css?v=2">
@@ -111,11 +111,8 @@
             <div class="agent-result-head"><strong>Rcoder Agent · 样例输出</strong><span class="agent-result-state"></span></div>
             <p class="agent-sent"></p>
             <div class="agent-artifacts" hidden>
-              <div class="agent-code-column">
-                <div class="agent-code"><div><span aria-hidden="true">R</span><code class="agent-filename"></code></div><pre><code class="agent-code-content"></code></pre></div>
-                <aside class="agent-chart-note"><h3>读图提示</h3><p>四组数据的相关系数都约为 0.82，但散点的分布和离群点却各不相同。</p><a href="assets/anscombe-chart.webp" target="_blank" rel="noopener">查看原尺寸图表</a></aside>
-              </div>
-              <div class="agent-output"><h3></h3><div class="agent-graphic"></div><p></p></div>
+              <div class="agent-code"><div><span aria-hidden="true">R</span><code class="agent-filename"></code></div><pre tabindex="0" aria-label="示例 R 代码"><code class="agent-code-content"></code></pre></div>
+              <div class="agent-output"><h3></h3><div class="agent-graphic"></div><p></p><a class="agent-chart-link" href="assets/anscombe-chart.webp" target="_blank" rel="noopener" hidden>查看原尺寸图表</a></div>
             </div>
             <a class="agent-next" href="https://rcoder.rlearner.com/" target="_blank" rel="noopener noreferrer" hidden>打开 Rcoder 运行你的任务</a>
           </div>
@@ -124,7 +121,7 @@
             <div data-title="分析 CSV" data-prompt="按地区汇总示例销售表的销售额，画柱状图，并导出汇总 CSV。" data-note="各地区销售总额" data-detail="示例数据合计 450，西区比东区多 50。" data-labels="东区|西区"></div>
             <div data-title="做统计检验" data-prompt="用 PlantGrowth 比较三组植物的平均干重，做单因素方差分析并绘制箱线图。" data-note="PlantGrowth · 三组比较" data-detail="单因素 ANOVA：F(2, 27) = 4.85，p = 0.0159；箱线图展示每组分布。" data-labels="对照|处理 1|处理 2"></div>
             <div data-title="检查数据质量" data-prompt="检查示例销售表的缺失价格和重复订单，列出对应行。" data-note="示例销售表检查" data-detail="标记问题行，不自动删除或填补。" data-labels="缺失价格|重复订单"></div>
-            <div data-idle="" data-running="正在展示写代码和运行步骤…" data-done="样例结果已展开" data-custom="这是你输入的任务。这里不运行自定义提示词，请到 Rcoder 工作台执行。" data-sent="已发送：" data-anscombe-alt="Anscombe 四组数据的四张散点图，趋势线相似，但点的分布差别很大。" data-asset="assets/anscombe-chart.webp"></div>
+            <div data-idle="" data-running="正在展示写代码和运行步骤…" data-done="样例结果已展开" data-custom="这是你输入的任务。这里不运行自定义提示词，请到 Rcoder 工作台执行。" data-sent="已发送：" data-anscombe-alt="Anscombe 四组数据的四张散点图，趋势线相似，但点的分布差别很大。"></div>
           </template>
         </section>
 

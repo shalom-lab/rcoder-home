@@ -3,6 +3,7 @@
   const root = document.getElementById('agent-preview');
   if (!root) return;
   const $ = s => root.querySelector(s);
+  const chart = new URL('assets/anscombe-chart.webp', document.currentScript.src);
   const input = $('#agent-input'), form = $('.agent-form'), send = $('.agent-send');
   const cycle = $('.agent-cycle'), live = $('.agent-live'), result = $('.agent-result');
   const artifacts = $('.agent-artifacts'), next = $('.agent-next'), graphic = $('.agent-graphic');
@@ -47,7 +48,7 @@ which(duplicated(sales$order) |
   function graph(i, scene) {
     const labels = scene.labels.split('|');
     if (i === 0) {
-      const img = el('img'); img.src = strings.asset;
+      const img = el('img'); img.src = chart.href;
       img.alt = strings.anscombeAlt; img.width = 960; img.height = 840;
       return img;
     }
@@ -117,10 +118,14 @@ which(duplicated(sales$order) |
   function pause() {
     auto = false; clearTimeout(timer); finishTyping(true);
   }
-  function choose(i, animate) {
+  function choose(i, animate, keepResult = false) {
     clearTimeout(timer); clearTimeout(runTimer); finishTyping(false);
-    playedIntro=true; selected=i; live.textContent=''; result.hidden=true;
+    playedIntro=true; selected=i;
     const prompt = scenes[i].prompt;
+    if (keepResult && !result.hidden && result.classList.contains('has-sample')) {
+      input.value=prompt; controls(); showSample(i, prompt); return;
+    }
+    live.textContent=''; result.hidden=true;
     if (!animate || !canAnimate()) {
       input.value = prompt; controls(); queue(); return;
     }
@@ -139,7 +144,7 @@ which(duplicated(sales$order) |
     typing=true; root.classList.add('is-typing'); step();
   }
   buttons.forEach((button,i)=>button.addEventListener('click',()=>{
-    pause(); choose(i,true);
+    pause(); choose(i,true,true);
   }));
   input.addEventListener('focus',pause);
   input.addEventListener('input',()=> {
@@ -167,6 +172,21 @@ which(duplicated(sales$order) |
     });
     observer.observe(root);
   }
+  function showSample(i, prompt) {
+    const scene=scenes[i], link=$('.agent-chart-link');
+    $('.agent-sent').textContent=strings.sent+' '+prompt;
+    $('.agent-filename').textContent=data[i].file;
+    const code=$('.agent-code-content');
+    code.textContent=data[i].code;
+    code.parentElement.scrollTop=0;
+    $('.agent-output h3').textContent=scene.note;
+    $('.agent-output p').textContent=scene.detail;
+    graphic.replaceChildren(graph(i,scene));
+    link.href=chart.href; link.hidden=i!==0;
+    $('.agent-result-state').textContent=strings.done;
+    live.textContent=strings.done;
+    artifacts.hidden=false;
+  }
   form.addEventListener('submit',e=>{
     e.preventDefault();
     pause();
@@ -174,22 +194,12 @@ which(duplicated(sales$order) |
     clearTimeout(runTimer);
     const i=scenes.findIndex(s=>s.prompt===string), match=i>=0;
     $('.agent-sent').textContent=strings.sent+' '+string;
+    result.classList.toggle('has-sample', match);
     artifacts.hidden=true; next.hidden=match; result.hidden=false;
     $('.agent-result-state').textContent=match?strings.running:strings.custom;
     live.textContent=match?strings.running:strings.custom;
     if (!match) return;
-    const show = () => {
-      const scene=scenes[i];
-      $('.agent-filename').textContent=data[i].file;
-      $('.agent-code-content').textContent=data[i].code;
-      $('.agent-output h3').textContent=scene.note;
-      $('.agent-output p').textContent=scene.detail;
-      graphic.replaceChildren(graph(i,scene));
-      $('.agent-result-state').textContent=strings.done;
-      live.textContent=strings.done;
-      artifacts.hidden=false;
-    };
-    if (canAnimate()) runTimer=setTimeout(show,560); else show();
+    if (canAnimate()) runTimer=setTimeout(() => showSample(i, string),560); else showSample(i, string);
   });
   controls(); queue();
 })();

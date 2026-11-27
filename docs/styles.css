@@ -273,28 +273,21 @@ html[lang=en] .step-caption p{max-width:40rem}
 .agent-result-head{justify-content:flex-start;align-items:baseline;flex-wrap:wrap;font-size:.87rem;color:#1a376d}
 .agent-result-state{font-size:.8rem;color:#405780}
 .agent-sent{margin:5px 0 9px;color:#465c7d;font-size:.87rem;overflow-wrap:anywhere;white-space:pre-wrap}
-.agent-artifacts{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:9px;animation:agent-reveal .25s ease both}
-.agent-code,.agent-output{min-width:0;border:1px solid #dce5fa;border-radius:11px;overflow:hidden}
-.agent-code{background:#111e36;color:#e4edff}
+.agent-result.has-sample{block-size:22rem;overflow:auto;scrollbar-gutter:stable}
+.agent-artifacts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:18rem;gap:9px}
+.agent-code,.agent-output{min-width:0;min-height:0;border:1px solid #dce5fa;border-radius:11px;overflow:hidden}
+.agent-code{display:flex;flex-direction:column;background:#111e36;color:#e4edff}
 .agent-code>div{display:flex;gap:8px;align-items:center;padding:6px 10px;border-bottom:1px solid #374769;font-size:.82rem}
 .agent-code>div span{background:#cee1ff;color:#16346c;border-radius:4px;padding:0 5px;font-weight:850}
-.agent-code pre{margin:0;padding:9px 10px;font-size:.81rem;line-height:1.47;white-space:pre-wrap;overflow-wrap:anywhere}
-.agent-output{padding:7px 11px;background:#f8faff}
+.agent-code pre{flex:1;min-height:0;overflow:auto;margin:0;padding:9px 10px;font-size:.81rem;line-height:1.47;white-space:pre-wrap;overflow-wrap:anywhere}
+.agent-code pre:focus-visible{outline:2px solid #cee1ff;outline-offset:-3px}
+.agent-output{display:grid;grid-template-rows:auto minmax(5rem,1fr) auto auto;gap:6px;padding:10px 11px;background:#f8faff;overflow:auto}
 .agent-output h3{font-size:.91rem;line-height:1.35;color:#16346b}
-.agent-output p{font-size:.8rem;line-height:1.4;margin:5px 0 2px;color:#405579}
-.agent-graphic img{width:100%;height:auto;display:block;margin:6px 0 3px;border-radius:6px}
-/* The chart gets a wide panel; its reading guide sits below the code on desktop. */
-.agent-code-column{display:contents}
-.agent-chart-note{display:none}
-@media(min-width:561px){
-  .agent-artifacts:has(.agent-graphic img){grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);align-items:stretch}
-  .agent-artifacts:has(.agent-graphic img) .agent-code-column{display:flex;flex-direction:column;gap:9px;min-width:0}
-  .agent-artifacts:has(.agent-graphic img) .agent-chart-note{display:flex;flex:1;flex-direction:column;align-items:flex-start;gap:6px;padding:11px 12px;border:1px solid #dce5fa;border-radius:11px;background:#f8faff;color:#16346b}
-  .agent-chart-note h3{font-size:.91rem;line-height:1.35}
-  .agent-chart-note p{font-size:.84rem;line-height:1.55;color:#405579}
-  .agent-chart-note a{margin-top:auto;padding-top:5px;color:#2147a0;font-size:.81rem;font-weight:700;text-decoration:underline;text-underline-offset:.2em}
-  .agent-output:has(.agent-graphic img)>p{display:none}
-}
+.agent-output p{font-size:.8rem;line-height:1.4;margin:0;color:#405579}
+.agent-graphic{display:grid;min-height:0;align-items:center}
+.agent-graphic img{width:100%;height:100%;min-height:0;object-fit:contain;display:block;border-radius:6px}
+.agent-chart-link{justify-self:start;color:#2147a0;font-size:.81rem;font-weight:700;text-decoration:underline;text-underline-offset:.2em}
+.agent-artifacts[hidden],.agent-chart-link[hidden]{display:none}
 .agent-bars,.agent-issues{list-style:none;padding:0;margin:7px 0;font-size:.81rem;color:#20385f}
 .agent-bars li,.agent-issues li{display:grid;grid-template-columns:1fr auto;gap:4px;margin:5px 0}
 .agent-bars i{height:8px;grid-column:1/-1;border-radius:5px;background:linear-gradient(90deg,#2b5be8 var(--fill),#e6edfe var(--fill))}
@@ -314,7 +307,8 @@ html[lang=en] .step-caption p{max-width:40rem}
   .agent-select{display:grid;gap:4px}
   .agent-cycle{justify-self:start;padding-left:0;min-height:31px}
   .agent-chips button{min-height:38px}
-  .agent-artifacts{grid-template-columns:minmax(0,1fr)}
+  .agent-result.has-sample{block-size:32rem}
+  .agent-artifacts{grid-template-columns:minmax(0,1fr);grid-template-rows:15.25rem 11.5rem}
 }
 @media(prefers-reduced-motion:reduce){.agent-preview *, .agent-preview *::before,.agent-preview *::after{animation:none!important;transition:none!important}}
 @media(max-width:560px){
