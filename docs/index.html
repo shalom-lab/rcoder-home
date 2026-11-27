@@ -11,7 +11,7 @@
 <link rel="alternate" hreflang="en" href="https://shalom-lab.github.io/rcoder-home/en/">
 <link rel="alternate" hreflang="x-default" href="https://shalom-lab.github.io/rcoder-home/">
 <link rel="icon" href="assets/rcoder.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=demo-panels-1">
+<link rel="stylesheet" href="styles.css?v=home-copy-1">
 <script src="app.js" defer></script>
 <script src="composer.js?v=2" defer></script>
 <script src="hero-typing.js?v=2" defer></script>
@@ -76,7 +76,6 @@
             <a class="button button-primary" href="https://rcoder.rlearner.com/" target="_blank" rel="noopener noreferrer">打开工作区</a>
             <a class="button button-quiet" href="#demo">查看案例成果</a>
           </div>
-          <p class="hero-note">手动运行 R 无需 API Key；Agent 需配置并验证模型 API Key。</p>
           <button hidden type="button" class="hero-rotation" aria-label="标题轮播" aria-pressed="false" data-hero-pause="暂停标题" data-hero-play="播放标题"><span class="hero-rotation-icon" aria-hidden="true"></span><span data-hero-control>暂停标题</span></button>
         </div>
         <section id="agent-preview" class="agent-preview" aria-labelledby="agent-preview-title">
@@ -104,7 +103,7 @@
               </div>
               <button type="button" class="agent-cycle" aria-pressed="false" aria-label="提示词自动轮播" data-pause="暂停轮播" data-play="播放轮播">暂停轮播</button>
             </div>
-            <div class="agent-meta"><p id="agent-privacy">本页使用预置样例，不上传文字、不调用模型。</p><p class="agent-live" role="status"></p></div>
+            <div class="agent-meta"><p id="agent-privacy">预置演示，不上传文字、不调用模型。</p><p class="agent-live" role="status"></p></div>
           </form>
           <noscript><p class="agent-noscript">启用 JavaScript 后可运行演示，也可以直接打开工作台。</p></noscript>
           <div class="agent-result" hidden>
@@ -127,9 +126,9 @@
 
       </div>
       <div class="proof-strip" aria-label="Rcoder 核心能力">
-        <div><span class="proof-icon">⌘</span><div><strong>Agent 写 R 代码</strong><span>自然语言到可编辑 R 脚本</span></div></div>
-        <div><span class="proof-icon">R</span><div><strong>浏览器运行 R</strong><span>代码、控制台、图表同屏</span></div></div>
-        <div><span class="proof-icon">■</span><div><strong>文件带得走</strong><span>保留脚本、PNG 和 CSV</span></div></div>
+        <div><span class="proof-icon">⌘</span><div><strong>Agent 写 R 代码</strong></div></div>
+        <div><span class="proof-icon">R</span><div><strong>浏览器运行 R</strong></div></div>
+        <div><span class="proof-icon">■</span><div><strong>文件带得走</strong></div></div>
       </div>
     </div>
   </section>
@@ -138,21 +137,21 @@
     <div class="shell">
       <div class="section-heading">
         <div><p class="eyebrow"><span class="eye-line"></span> 从需求到交付</p><h2 id="workflow-heading">AI 写出来的代码，<br>你看得见，也改得动。</h2></div>
-        <p>用 Anscombe 四重奏走一遍：向 Rcoder Agent 说清需求，核对它写的 R 代码，再下载图表和汇总表。</p>
+        <p>从一条需求到图表和汇总表，用 Anscombe 四重奏走一遍。</p>
       </div>
       <div class="workflow-board">
         <div class="step-list" role="tablist" aria-label="Agent 工作流程" aria-orientation="vertical">
-          <button class="step" id="tab-prompt" data-step="prompt" type="button" role="tab" aria-selected="true" aria-controls="panel-prompt" tabindex="0"><span class="step-mark">◎</span><span><strong>说清需求</strong><small>指定数据、图表和输出</small></span></button>
-          <button class="step" id="tab-code" data-step="code" type="button" role="tab" aria-selected="false" aria-controls="panel-code" tabindex="-1"><span class="step-mark">&lt;/&gt;</span><span><strong>检查代码</strong><small>打开 Agent 写出的 R 脚本</small></span></button>
-          <button class="step" id="tab-run" data-step="run" type="button" role="tab" aria-selected="false" aria-controls="panel-run" tabindex="-1"><span class="step-mark">▷</span><span><strong>运行与核对</strong><small>看运行反馈和结果预览</small></span></button>
-          <button class="step" id="tab-output" data-step="output" type="button" role="tab" aria-selected="false" aria-controls="panel-output" tabindex="-1"><span class="step-mark">▤</span><span><strong>带走结果</strong><small>回到项目文件下载成果</small></span></button>
+          <button class="step" id="tab-prompt" data-step="prompt" type="button" role="tab" aria-selected="true" aria-controls="panel-prompt" tabindex="0"><span class="step-mark">◎</span><span><strong>说清需求</strong></span></button>
+          <button class="step" id="tab-code" data-step="code" type="button" role="tab" aria-selected="false" aria-controls="panel-code" tabindex="-1"><span class="step-mark">&lt;/&gt;</span><span><strong>检查代码</strong></span></button>
+          <button class="step" id="tab-run" data-step="run" type="button" role="tab" aria-selected="false" aria-controls="panel-run" tabindex="-1"><span class="step-mark">▷</span><span><strong>运行与核对</strong></span></button>
+          <button class="step" id="tab-output" data-step="output" type="button" role="tab" aria-selected="false" aria-controls="panel-output" tabindex="-1"><span class="step-mark">▤</span><span><strong>带走结果</strong></span></button>
         </div>
         <div class="step-content">
           <section class="step-panel" id="panel-prompt" role="tabpanel" aria-labelledby="tab-prompt" tabindex="0">
             <div class="artifact-sheet">
-              <p class="artifact-kicker">PROMPT</p><h3>先告诉 Agent，你想得到什么</h3><p>指定使用 R 内置数据，画四张坐标范围一致的散点图，再保存图表和汇总表。</p><blockquote>用 R 自带的 anscombe 数据画四组共享坐标范围的散点图，并保存图表和汇总表。</blockquote>
+              <h3>给 Agent 的示例需求</h3><blockquote>用 R 自带的 anscombe 数据画四组共享坐标范围的散点图，并保存图表和汇总表。</blockquote>
             </div>
-            <div class="step-caption"><div><h3>先告诉 Agent，你想得到什么</h3><p>指定使用 R 内置数据，画四张坐标范围一致的散点图，再保存图表和汇总表。</p></div><button class="button button-quiet copy-button" id="copy-prompt" type="button">复制示例需求</button></div>
+            <div class="step-caption"><button class="button button-quiet copy-button" id="copy-prompt" type="button">复制示例需求</button></div>
           </section>
           <section class="step-panel" id="panel-code" role="tabpanel" aria-labelledby="tab-code" tabindex="0" hidden>
             <div class="artifact-sheet">
@@ -164,7 +163,7 @@ plot(anscombe$x1, anscombe$y1)</code></pre><p>这是用来说明流程的代码�
           </section>
           <section class="step-panel" id="panel-run" role="tabpanel" aria-labelledby="tab-run" tabindex="0" hidden>
             <div class="artifact-sheet">
-              <p class="artifact-kicker">VERIFY · PNG + CSV</p><h3>运行完成，也要打开结果看看</h3><ul><li>确认图表的坐标、分面和数据来源。</li><li>打开项目中的 PNG，不只看运行完成提示。</li><li>核对 CSV 的列名、分组和数值。</li></ul>
+              <h3>运行完成，也要打开结果看看</h3><ul><li>确认图表的坐标、分面和数据来源。</li><li>打开项目中的 PNG，不只看运行完成提示。</li><li>核对 CSV 的列名、分组和数值。</li></ul>
             </div>
             <div class="step-caption"><div><h3>运行完成，也要打开结果看看</h3><p>回看 Agent 的运行反馈，打开 PNG 预览，核对坐标、分面和数据来源。</p></div></div>
           </section>
@@ -187,7 +186,7 @@ plot(anscombe$x1, anscombe$y1)</code></pre><p>这是用来说明流程的代码�
       <div>
         <p class="eyebrow"><span class="eye-line"></span> 公开数据案例 · ANSCOMBE</p>
         <h2 id="demo-heading">先看图，再解释数字。</h2>
-        <p>四组数据的相关系数都约为 0.82，散点分布却截然不同。这份案例把同一分析需求拆成脚本、图表和汇总表，方便打开、比较和复用。</p>
+        <p>Anscombe 四重奏的四组数据，相关系数都约为 0.82，散点分布却截然不同。</p>
         <p class="demo-note">数据来自 R 内置 Anscombe 四重奏；这是基于数据的新绘制，不是论文原图。</p>
         <a class="button button-quiet release-case-download" href="assets/anscombe-chart.webp" download="rcoder-anscombe.webp">下载示例图</a>
       </div>
@@ -201,13 +200,13 @@ plot(anscombe$x1, anscombe$y1)</code></pre><p>这是用来说明流程的代码�
       <h2 id="paths-heading">想让 AI 搭把手，<br>也能自己写、自己跑。</h2>
       <div class="path-grid">
         <article class="path path-agent">
-          <p class="path-tag">AGENT</p><h3>用一段话交代任务</h3><p>先配置并验证你自己的模型 API Key，再让 Agent 辅助编写和运行 R 代码；脚本和结果由你检查。</p><a class="text-link" href="#workflow">看 Agent 示例</a>
+          <p class="path-tag">AGENT</p><h3>用一段话交代任务</h3><p>配置并验证模型 API Key，交给 Agent 写和运行 R 代码。</p><a class="text-link" href="#workflow">看 Agent 示例</a>
         </article>
         <article class="path">
-          <p class="path-tag">R CONSOLE</p><h3>直接运行 R</h3><p>打开项目，等 R 就绪，然后在控制台运行 <code>1 + 1</code>。手动运行不需要模型 API Key。</p><a class="text-link" href="https://rcoder.rlearner.com/" target="_blank" rel="noopener noreferrer">打开工作区</a>
+          <p class="path-tag">R CONSOLE</p><h3>直接运行 R</h3><p>在浏览器里写和运行 R，无需 API Key。</p><a class="text-link" href="https://rcoder.rlearner.com/" target="_blank" rel="noopener noreferrer">打开工作区</a>
         </article>
         <article class="path">
-          <p class="path-tag">QUICK DEMO</p><h3>先试一个示例</h3><p>选一个示例任务，看看 Rcoder 怎样展示图表和代码。不用配置 API Key。</p><a class="text-link" href="#agent-preview">试用演示</a>
+          <p class="path-tag">QUICK DEMO</p><h3>先试一个示例</h3><p>免配置，直接看示例代码和结果。</p><a class="text-link" href="#agent-preview">试用演示</a>
         </article>
       </div>
     </div>
@@ -215,7 +214,7 @@ plot(anscombe$x1, anscombe$y1)</code></pre><p>这是用来说明流程的代码�
 
   <section class="faq section" id="faq" aria-labelledby="faq-heading">
     <div class="shell faq-grid">
-      <div><p class="eyebrow"><span class="eye-line"></span> 开始前</p><h2 id="faq-heading">常见问题</h2><p>关于 API Key、数据存储和项目导出。</p></div>
+      <div><h2 id="faq-heading">常见问题</h2></div>
       <div class="faq-list">
         <details><summary>试用 Rcoder 一定要填 API Key 吗？</summary><p>不用。手动写代码、运行 R 和看图表都不需要模型 API Key。使用 Agent 时才需要配置并验证模型 Key，模型调用的计费和限制取决于所选服务。</p></details>
         <details><summary>Agent 生成的 R 脚本能修改吗？</summary><p>可以。它是项目里的普通 R 文件，可以在编辑器里阅读和调整，再重新运行。输出也应打开核对，不把 Agent 的文字回复当作验收。</p></details>
@@ -231,7 +230,7 @@ plot(anscombe$x1, anscombe$y1)</code></pre><p>这是用来说明流程的代码�
         <div class="models-intro">
           <div>
             <h2 id="models-heading">选一个顺手的 AI 模型，开始分析。</h2>
-            <p>可连接 DeepSeek、OpenAI、Gemini 等 AI 服务，也可配置兼容接口。使用条件和费用取决于所选服务。</p>
+            <p>支持兼容接口，费用和使用限制以服务商为准。</p>
           </div>
           <button type="button" class="models-toggle" aria-controls="models-list" data-play="播放轮播" data-stop="停止并查看全部" hidden>停止并查看全部</button>
         </div>
@@ -257,7 +256,7 @@ plot(anscombe$x1, anscombe$y1)</code></pre><p>这是用来说明流程的代码�
 
   <section class="closing" aria-labelledby="closing-heading">
     <div class="shell"><div class="closing-card">
-      <div><p class="eyebrow">RCODER</p><h2 id="closing-heading">在 Rcoder 开始您的下一个数据分析项目。</h2></div>
+      <div><h2 id="closing-heading">在 Rcoder 开始您的下一个数据分析项目。</h2></div>
       <a class="button button-primary" href="https://rcoder.rlearner.com/" target="_blank" rel="noopener noreferrer">打开工作区</a>
     </div></div>
   </section>
@@ -265,7 +264,6 @@ plot(anscombe$x1, anscombe$y1)</code></pre><p>这是用来说明流程的代码�
 <footer class="site-footer">
   <div class="shell footer-grid">
     <a class="brand" href="#top"><img src="assets/rcoder.svg" width="30" height="30" alt="">Rcoder</a>
-    <p>你的 AI 数据分析助手。</p>
     <nav class="footer-links" aria-label="页脚导航"><a href="#demo">示例成果</a><a href="#models">模型支持</a><a href="https://www.youtube.com/watch?v=4WHwohzvpBI">YouTube 演示</a></nav>
   </div>
   <p class="shell footer-filing"><a href="https://beian.miit.gov.cn/">豫ICP备2022018163号-9</a></p>
