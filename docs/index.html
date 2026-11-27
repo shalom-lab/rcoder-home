@@ -215,10 +215,13 @@ plot(mpg ~ wt, data = d, pch = 19, col = colors[d$am + 1L])</code></pre><p>这�
     <div class="shell faq-grid">
       <div><h2 id="faq-heading">常见问题</h2></div>
       <div class="faq-list">
-        <details><summary>试用 Rcoder 一定要填 API Key 吗？</summary><p>不用。手动写代码、运行 R 和看图表都不需要模型 API Key。使用 Agent 时才需要配置并验证模型 Key，模型调用的计费和限制取决于所选服务。</p></details>
-        <details><summary>Agent 生成的 R 脚本能修改吗？</summary><p>可以。它是项目里的普通 R 文件，可以在编辑器里阅读和调整，再重新运行。输出也应打开核对，不把 Agent 的文字回复当作验收。</p></details>
-        <details><summary>项目保存在哪里？换浏览器怎么办？</summary><p>项目数据保存在当前浏览器的站点存储。换设备、浏览器或工作区域名前，先下载并打开项目 ZIP 检查，再在新环境导入验证。ZIP 以项目文件为主，不是整个工作区状态的快照。</p></details>
-        <details><summary>使用 Agent 时，数据会发送到哪里？</summary><p>项目默认保存在浏览器里，但 Agent 请求会发给你配置的模型服务；你给出的提示、附件或被纳入请求的项目上下文可能随请求发送。使用敏感数据前请核对服务政策和项目要求。</p></details>
+        <details><summary>我想学 R，Rcoder 能帮我吗？</summary><p>可以。告诉 Rcoder 你现在会什么、想学什么，它可以按你的程度安排练习。比如用你关心的数据画第一张图，边跑代码边解释；遇到报错，也可以接着问。</p></details>
+        <details><summary>不会 R，也能分析自己的报表吗？</summary><p>可以。导入 CSV，用平常说话的方式交代任务，比如「按月份汇总销售额，画出趋势」。Rcoder Agent 会写 R 代码、运行分析并生成图表，你可以拿原表核对。</p></details>
+        <details><summary>分析结果靠谱吗？AI 会不会编数字？</summary><p>用 Agent 跑分析时，图表和统计数值来自实际执行的 R 代码。代码和输出都能打开核对，改完也可以再跑。AI 仍可能读错字段、选错方法或解读有误，重要结论要复核。</p></details>
+        <details><summary>支持 DeepSeek 吗？</summary><p>支持，也可以配置 OpenAI、Claude、Gemini 等主流模型。使用 Agent 需要配置所选服务；只想手动运行 R，不需要模型 API Key。</p></details>
+        <details><summary>能和 RStudio 一起用吗？</summary><p>可以。把 RStudio 里的 R 脚本和数据文件导入 Rcoder，或从 Rcoder 导出项目 ZIP，解压后用 RStudio 打开其中的 <code>.Rproj</code> 文件。换环境后，部分 R 包可能需要重新安装。</p></details>
+        <details><summary>项目保存在哪里？换浏览器怎么办？</summary><p>项目文件默认保存在当前浏览器。换浏览器、设备或域名前，先导出 ZIP，并在新环境确认能打开。ZIP 保存的是项目文件，不是整个工作区状态。</p></details>
+        <details><summary>用 Agent 分析时，数据会发给谁？</summary><p>Agent 会向你配置的模型服务发送请求，提示词和纳入请求的附件或项目内容也可能随请求发送。处理敏感数据前，请先确认服务政策和数据使用要求。</p></details>
       </div>
     </div>
   </section>
